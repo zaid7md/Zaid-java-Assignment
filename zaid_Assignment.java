@@ -70,7 +70,7 @@ class roleplay extends games //inherited class
     void display()
     {
         System.out.println("\n\nSummarizing your synopsis");
-        System.out.printf("Roleplay Game's name : %s\nMinimum Ratings it must have : %d\nPrice it should be costing : %f\nDevelopers : %s\nYour favourite role play game : %s\nNumber of hours you have played roleplay games : %d\nGraphics Preset : %s\n",name,ratings,price,developers,favRolePlayGame,hoursPlayed,graphicsPreset);
+        System.out.printf("Roleplay Game's name : %s\nMinimum Ratings it must have : %d\nPrice it should be costing : %f\nDevelopers : %s\nYour favourite role play game : %s\nNumber of hours you have played roleplay games : %d\nGraphics Preset : %s",name,ratings,price,developers,favRolePlayGame,hoursPlayed,graphicsPreset);
     }
 }
 
@@ -118,7 +118,7 @@ class horror extends games //inherited class
     {
         System.out.println("\nSummarizing your synopsis");
         System.out.printf("Horror Game's name : %s\nMinimum Ratings it must have : %d\nPrice it should be costing : %f\nDevelopers : %s\nYour favourite horror game : %s\n",name,ratings,price,developers,favhorrorGame);
-;
+
     }
 }
 
@@ -267,7 +267,7 @@ public class zaid_Assignment // class which contains the main method
                      System.out.println("\nGreetings to everybody. My name is Mohammad Zaid, and in this programme code, my primary goal is to gather helpful data from all types of gamers on the kinds of games they enjoy playing and the kinds of games they would like the game developers to create so that it may assist them build the best games for everyone.");
                      System.out.println("\n\nLets BEGIN with the synopsis\n\n");
     }
-    public static String setName() // static method 
+    public static String setName() // static method created for inititalizing the vairables in the program and then passed to the constructor 
     {
         Scanner sc = new Scanner(System.in); 
         String gameName ; 
@@ -299,7 +299,7 @@ public class zaid_Assignment // class which contains the main method
                 }
                 return gameName ; 
     }
-    public static String selectDeveloper()// static method 
+    public static String selectDeveloper()// static method for initializing the variables in the program  and then will be passed to the constructor 
     {
         int choice ; 
         Scanner sc = new Scanner(System.in); 
@@ -328,7 +328,7 @@ public class zaid_Assignment // class which contains the main method
                 }
                 return developers;
     }
-    public static int setRate()// static method 
+    public static int setRate()// static method created for initiliazing the variables and then will be passed on to the constrcutor 
     {
         Scanner sc = new Scanner(System.in);
         int rate ; int choice2 ; 
@@ -348,7 +348,7 @@ public class zaid_Assignment // class which contains the main method
                 }
                 return rate ; 
     }
-    public static float setPrice()// static method 
+    public static float setPrice()// static method created for initiliazing the variables and then will be passed on to the constructor 
     {
         Scanner sc = new Scanner(System.in);
         float price ; 
@@ -364,7 +364,8 @@ public class zaid_Assignment // class which contains the main method
         String name ; int  age ; String country ; float exp ; int gamesplayed ; int ch ; 
         System.out.printf("\nEnter you choice :    1. Enter your name\t\t2. Dont mention name    : ");
         ch = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); // this statement inserted here so that it gets skipped when nextInt is used and later in the program it does not 
+                        // skip any further nextLine() instruction 
 
         if(ch == 1)
         {
@@ -417,7 +418,8 @@ public class zaid_Assignment // class which contains the main method
         if(name == "Dont mention" && age == 0 && country == "Dont mention" && exp == 4 && gamesplayed == 1)
         {f1 = new fillerDetails();} // after finalizing all the details selecting which contructor to invoke based on the input of user
         else
-        {f1= new fillerDetails(name , age , country , exp , gamesplayed );}
+        {f1= new fillerDetails(name , age , country , exp , gamesplayed );} // if details mathc according to the paramterized constrcutor
+                                                                            //paramterized constrcutor for user details invoked 
 
         f1.display();
         System.out.printf("\n_______________Enter how many entries you want to fill_______________ : ");
@@ -450,7 +452,6 @@ public class zaid_Assignment // class which contains the main method
             System.out.printf("3. HORROR GAMES\n");
             System.out.printf("4. FPS_MULTIPLAYER GAMES\n");
             System.out.printf("5. SPORTS GAMES\n");
-            System.out.printf("0. EXIT\n");
             System.out.print("Enter your choice here : ");
             choice = sc.nextInt();
 
@@ -505,7 +506,7 @@ public class zaid_Assignment // class which contains the main method
                 System.out.print("\n\nHow many hours have you played games : ");
                 ho = sc.nextInt();
 
-                //based on the inputs of users the required constrcutor is invoked 
+                //based on the inputs of users the required constructor is invoked 
                 if(gameName == null && developers == null && price>= 400 &&price <=500 && favgame == "No favourite game" && rate>=5 && rate <=8)
                 {
                     r[c] = new roleplay(ho);
@@ -514,7 +515,7 @@ public class zaid_Assignment // class which contains the main method
                 {
                     r[c] = new roleplay(gameName, rate, price, developers , favgame,ho);
                 }
-                ga[c] = r[c];  // upcasting 
+                ga[c] = r[c];  // After creating the object of roleplay class we use parents reference to refer to it 
                 ga[c].display();
             }
 
@@ -574,7 +575,7 @@ public class zaid_Assignment // class which contains the main method
                 {
                     ra[c] = new racing(gameName, rate, price, developers , favgame);
                 }
-                ga[c] = ra[c]; //upcasting 
+                ga[c] = ra[c]; // After creating the object of roleplay class we use parents reference to refer to it (upcasting)
                 ga[c].display();
             }
             else if(choice == 3)
@@ -634,7 +635,7 @@ public class zaid_Assignment // class which contains the main method
                 {
                     h[c] = new horror(gameName, rate, price, developers , favgame);
                 }
-                ga[c] = h[c]; //upcasting 
+                ga[c] = h[c]; //After creating the object of roleplay class we use parents reference to refer to it (upcasting)
                 ga[c].display();
             }
             else if (choice == 4)
@@ -694,7 +695,7 @@ public class zaid_Assignment // class which contains the main method
                 {
                     fps[c] = new fpsMultiplayer(gameName, rate, price, developers , favgame);
                 }
-                ga[c] = fps[c]; //upcasting 
+                ga[c] = fps[c]; //After creating the object of roleplay class we use parents reference to refer to it (upcasting)
                 ga[c].display();
             }
             else if (choice == 5)
@@ -754,12 +755,8 @@ public class zaid_Assignment // class which contains the main method
                 {
                     s[c] = new sports(gameName, rate, price, developers , favgame);
                 }
-                ga[c] = s[c]; //upcasting 
+                ga[c] = s[c]; //After creating the object of roleplay class we use parents reference to refer to it (upcasting) 
                 ga[c].display();
-            }
-            else 
-            {
-                System.out.println("\nNo details recorded in this synopisis");
             }
             c++;
         }
@@ -775,14 +772,14 @@ public class zaid_Assignment // class which contains the main method
         System.out.println("Lets see which games you are interested in buying");
         System.out.println("Also you can buy one game multiple times , maybe for your friends or as a gift :)\n");
 
-        // now accessing the package class 
-        derived obj = new derived();
+        // now accessing the package class contennt that was imported 
+
+        derived obj = new derived(); // creating on object 
         System.out.print("Current Budget : "+obj.budget+"\n");
-        boolean f = true ; 
-        int count = 0 ;
+        boolean f = true ; // to break out of while loop when user enter 0 
         while(f) // using while , and switch break for menu driven approach 
         {
-            System.out.println("\n");
+            System.out.println("\n---------------------------\n");
             System.out.println("Enter 1 for roleplay");
             System.out.println("Enter 2 for racing");
             System.out.println("Enter 3 for horror");
@@ -841,7 +838,8 @@ public class zaid_Assignment // class which contains the main method
                 }
             }
         }
-        System.out.println("\nWould you like to have to have an enitre summary of your Survey ?(1 : Yes\t0 : No) : ");
+        System.out.println("\nWould you like to have to have an entire summary of your Survey ?(1 : Yes\t0 : No) : ");
+        // providing the user a breid summary of the survey conducted 
         choice = sc.nextInt(); 
         if(choice != 0)
         {
@@ -854,6 +852,10 @@ public class zaid_Assignment // class which contains the main method
         }
         System.out.println("\n");
         obj.display();
+        }
+        else
+        {
+            System.out.println("THANK_YOU");
         }
         sc.close();
     }
